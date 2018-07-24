@@ -17,6 +17,7 @@ class Cards extends React.Component{
               this.state.tunings.map((t, i) => {
                 return (
                   <ListItem
+					containerStyle={styles.ListItemStyle}
                     key={i}
                     title={t.description}
                     titleStyle={styles.ListItemTitle}
@@ -44,6 +45,11 @@ const styles = StyleSheet.create({
         padding: 0,
         marginBottom: 20,
         backgroundColor: COLORS.GREY.GREY,
+    },
+	ListItemStyle: {
+    	height: 70,
+    	padding: 20,
+    	marginTop: 20,
     }
 })
 
