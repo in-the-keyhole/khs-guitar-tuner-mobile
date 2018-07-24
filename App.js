@@ -1,10 +1,10 @@
 import React from 'react';
-import {Home} from 'components/screens/home-screen.js';
+import {Routes} from 'components/routes/routes.js'
 
 export default class App extends React.Component {
   render() {
     return (
-      <Home />
+      <Routes />
     );
   }
 }

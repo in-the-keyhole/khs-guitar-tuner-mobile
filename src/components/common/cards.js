@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import { COLORS } from 'constants/styles';
 
@@ -22,7 +22,7 @@ class Cards extends React.Component{
 	
     render() {
         return (
-            <Card containerStyle={styles.card} >
+            <Card containerStyle={styles.Card} >
             {
               this.state.tunings.map((t, i) => {
                 return (
@@ -32,7 +32,7 @@ class Cards extends React.Component{
                     titleStyle={styles.ListItemTitle}
                     subtitle={t.notes}
                     onPress={()=> {
-                        alert(t.description);
+                        this.props.gotoDetail();
                     }}
                   />
                 );
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         color: 'white', 
         fontWeight: 'bold'
     },
-    card: {
+    Card: {
         padding: 0,
         marginBottom: 20,
         backgroundColor: COLORS.GREY.GREY,

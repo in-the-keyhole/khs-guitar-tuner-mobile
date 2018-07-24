@@ -21,21 +21,29 @@ const IconContainer = styled.View`
 
 const TitleContainer = styled.Text`
     color: ${COLORS.WHITE.WHITE};
-    padding-top: 20;
     padding-left: 15;
+    padding-top: 20;
 `;
 
 class Header extends React.Component {
     render(){
+        
         return(
             <Container>
                 <TitleContainer style={{fontWeight: 'bold', fontSize: 20}}>{this.props.title}</TitleContainer>
 
-                <TouchableWithoutFeedback onPress={() => {alert('About')}}>
-                    <IconContainer>
+                { this.props.showAbout ? 
+                <TouchableWithoutFeedback onPress={() => this.props.gotoAbout()}>
+                    <IconContainer style>
                         <Icon name={'info'} size={30} color={COLORS.WHITE.WHITE} />
                     </IconContainer>
+                </TouchableWithoutFeedback> : 
+                <TouchableWithoutFeedback onPress={() => this.props.gotoHome()}>
+                    <IconContainer style>
+                        <Icon name={'home'} size={30} color={COLORS.WHITE.WHITE} />
+                    </IconContainer>
                 </TouchableWithoutFeedback>
+                }
             </Container>
         );
     }
