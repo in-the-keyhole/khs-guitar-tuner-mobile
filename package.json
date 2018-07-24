@@ -30,6 +30,7 @@
     "react-native-material-design": "^0.3.7",
     "react-native-navbar": "^2.1.0",
     "react-native-router-flux": "^4.0.0-beta.31",
+    "react-native-sound": "^0.10.9",
     "react-navigation": "^2.9.0",
     "styled-components": "^3.3.3"
   }

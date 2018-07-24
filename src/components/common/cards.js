@@ -4,22 +4,12 @@ import { Card, ListItem } from 'react-native-elements';
 import { COLORS } from 'constants/styles';
 
 class Cards extends React.Component{
-	constructor() {
-        super();
+	constructor(props) {
+        super(props);
         this.state = {
-            tunings: []
+            tunings: this.props.tunings
         };
 	}
-	
-	componentWillMount() {
-        fetch( 'http://www.khsguitartuner.com/api-tunings' )
-            .then( results => { return results.json(); } )
-            .then( data => {
-                this.setState( { tunings: data._embedded.tunings } );
-            } )
-            .catch(( error ) => { console.log( error ) } );
-    }
-	
     render() {
         return (
             <Card containerStyle={styles.Card} >
@@ -32,6 +22,8 @@ class Cards extends React.Component{
                     titleStyle={styles.ListItemTitle}
                     subtitle={t.notes}
                     onPress={()=> {
+                        global.description = t.description;
+                        global.notes = t.notes;
                         this.props.gotoDetail();
                     }}
                   />

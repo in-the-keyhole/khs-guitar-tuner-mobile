@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet, Text } from 'react-native';
 import {Header} from 'components/common/header.js';
 import { Actions } from 'react-native-router-flux';
 import {COLORS} from 'constants/styles.js';
@@ -8,8 +8,7 @@ class Detail extends React.Component {
     constructor(props){
         super(props);
         this.state ={
-            description: '',
-            notes: ''
+            tunings: this.props.tunings,
         }
     }
 
@@ -20,8 +19,9 @@ class Detail extends React.Component {
     render(){
         return(
             <View style={styles.Detail}>
-                <Header title={this.state.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome} />
+                <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome} />
                 <View style={styles.Fret}>
+                    <Text>{global.notes}</Text>
                     <Image style={styles.Fret} source={require('./images/fret2.jpg')} />
                 </View>
             </View>

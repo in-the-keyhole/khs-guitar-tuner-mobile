@@ -9,14 +9,16 @@ class Home extends React.Component {
   goToAbout = () => {
     Actions.about();
   }
-  gotoDetail = () => {
+  
+  gotoDetail = () =>  {
     Actions.detail();
   }
+
   render() {
     return (
       <ScrollView style={styles.view}>
         <Header title="KHS Guitar Tuner" gotoAbout={this.goToAbout} showAbout={true}/>
-        <Cards gotoDetail={this.gotoDetail}/>
+        <Cards tunings={this.props.tunings} gotoDetail={this.gotoDetail}/>
       </ScrollView>
     );
   }
