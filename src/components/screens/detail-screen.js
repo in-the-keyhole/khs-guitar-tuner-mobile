@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View, StyleSheet, Text } from 'react-native';
+import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import {Header} from 'components/common/header.js';
 import { Actions } from 'react-native-router-flux';
 import {COLORS} from 'constants/styles.js';
@@ -114,6 +114,10 @@ class Detail extends React.Component {
             return false;
         }
     }
+	
+	onPressButton = () => {
+		alert('You Pressed The Button');
+	}
 
     render(){
         let splitNotes = global.notes.split(',');
@@ -127,6 +131,12 @@ class Detail extends React.Component {
         return(
             <View style={styles.Detail}>
                 <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome}/>
+				<View style={{justifyContent: 'center', alignItems: 'center',}}>
+					<TouchableOpacity onPress={this.onPressButton}>
+						<Image style={styles.Button} source={require('./images/button.png')}/>
+						<Text style={styles.ButtonText}>Tune</Text>
+					</TouchableOpacity>
+				</View>
                 <View style={styles.Fret}>
                     <Image style={styles.Fret} source={require('./images/fret2.jpg')} />
 						<View style={{flex:1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
@@ -150,7 +160,6 @@ const styles = StyleSheet.create({
         
     },
     Fret: {
-        marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -172,6 +181,19 @@ const styles = StyleSheet.create({
 		fontSize: 23,
 		color: COLORS.BLUE.BLUE,
 	},
+	Button: {
+		top: 10,
+		height: 50,
+		width: 100,
+	},
+	ButtonText: {
+		bottom: 30,
+		textAlign: 'center',
+		fontWeight: 'bold',
+		height: 50,
+		fontSize: 23,
+		color: COLORS.WHITE.WHITE,
+	}
 });
 
 export {Detail};
