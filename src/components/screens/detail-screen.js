@@ -185,6 +185,7 @@ const styles = StyleSheet.create({
 		top: 10,
 		height: 50,
 		width: 100,
+		borderRadius: 10,
 	},
 	ButtonText: {
 		bottom: 30,
