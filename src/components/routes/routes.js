@@ -3,7 +3,6 @@ import { Router, Scene, Actions } from 'react-native-router-flux'
 import {Home} from 'components/screens/home-screen.js';
 import {About} from 'components/screens/about-screen.js';
 import {Detail} from 'components/screens/detail-screen.js';
-import { Action } from 'react-native-router-flux';
 
 class Routes extends React.Component {
     constructor(props){

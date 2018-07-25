@@ -39,7 +39,8 @@ class Cards extends React.Component{
 const styles = StyleSheet.create({
     ListItemTitle: {
         color: 'white', 
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 20
     },
     Card: {
         padding: 0,
@@ -47,9 +48,8 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.GREY.GREY,
     },
 	ListItemStyle: {
-    	height: 70,
-    	padding: 20,
-    	marginTop: 20,
+      height: 70,
+      marginTop: 10
     }
 })
 
