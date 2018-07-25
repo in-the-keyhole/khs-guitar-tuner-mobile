@@ -153,6 +153,13 @@ class Detail extends React.Component {
 							<Text style={this.ifPlayingNote(note5) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(note5) ? this.stopSound() : this.playSound(note5)}>{splitNotes[5].toUpperCase()}</Text>
 						</View>
                 </View>
+				<View style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
+					<Text style={styles.BottomText}>Click on a SINGLE NOTE to hear that note played on</Text>
+					<Text style={styles.BottomText}>a loop. Click it again to stop the loop.</Text>
+					<Text style={styles.BottomText}></Text>
+					<Text style={styles.BottomText}>Click on TUNE for each note to be played five</Text>
+					<Text style={styles.BottomText}>times. Click it again to stop the tuning cycle.</Text>
+				</View>
             </View>
         );
     }
@@ -201,6 +208,10 @@ const styles = StyleSheet.create({
 		height: 50,
 		fontSize: 16,
 		color: COLORS.WHITE.WHITE,
+	},
+	BottomText: {
+		fontWeight: 'bold',
+		fontSize: 15,
 	}
 });
 
