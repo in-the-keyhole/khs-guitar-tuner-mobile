@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View, StyleSheet, Text, Button } from 'react-native';
+import { Image, View, StyleSheet, Text } from 'react-native';
 import {Header} from 'components/common/header.js';
 import { Actions } from 'react-native-router-flux';
 import {COLORS} from 'constants/styles.js';
@@ -17,6 +17,7 @@ class Detail extends React.Component {
     }
 
     gotoHome = () => {
+        this.audioPlayer.stopAsync();
         Actions.home()
     }
 
@@ -125,7 +126,7 @@ class Detail extends React.Component {
 
         return(
             <View style={styles.Detail}>
-                <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome} />
+                <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome}/>
                 <View style={styles.Fret}>
                     <Image style={styles.Fret} source={require('./images/fret2.jpg')} />
 						<View style={{flex:1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
