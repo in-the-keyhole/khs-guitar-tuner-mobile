@@ -155,18 +155,20 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 	Stopped: {
+		bottom: 175,
 		width: 35,
 		textAlign: 'center',
 		fontWeight: 'bold',
-		height: 450,
+		height: 100,
 		fontSize: 23,
 		color: COLORS.WHITE.WHITE,
     },
     Playing: {
+		bottom: 175,
 		width: 35,
 		textAlign: 'center',
 		fontWeight: 'bold',
-		height: 450,
+		height: 100,
 		fontSize: 23,
 		color: COLORS.BLUE.BLUE,
 	},
