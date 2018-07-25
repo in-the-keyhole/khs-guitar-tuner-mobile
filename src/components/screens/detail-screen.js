@@ -18,30 +18,6 @@ class Detail extends React.Component {
 
     render(){
 		let splitNotes = global.notes.split(',');
-		if(splitNotes[0].length == 1){
-			splitNotes[0] += ' ';
-			splitNotes[0] += ' ';
-		}
-		if(splitNotes[1].length == 1){
-			splitNotes[1] += ' ';
-			splitNotes[1] += ' ';
-		}
-		if(splitNotes[2].length == 1){
-			splitNotes[2] += ' ';
-			splitNotes[2] += ' ';
-		}
-		if(splitNotes[3].length == 1){
-			splitNotes[3] += ' ';
-			splitNotes[3] += ' ';
-		}
-		if(splitNotes[4].length == 1){
-			splitNotes[4] += ' ';
-			splitNotes[4] += ' ';
-		}
-		if(splitNotes[5].length == 1){
-			splitNotes[5] += ' ';
-			splitNotes[5] += ' ';
-		}
         return(
             <View style={styles.Detail}>
                 <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome} />
@@ -73,9 +49,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 	Text: {
+		width: 35,
+		textAlign: 'center',
 		fontWeight: 'bold',
 		height: 450,
-		padding: 5,
 		fontSize: 30,
 		color: 'rgb(255,255,255)',
 	},
