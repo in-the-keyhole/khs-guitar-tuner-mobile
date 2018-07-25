@@ -182,13 +182,13 @@ const styles = StyleSheet.create({
 		color: COLORS.BLUE.BLUE,
 	},
 	Button: {
-		top: 10,
+		top: 20,
 		height: 50,
 		width: 100,
 		borderRadius: 10,
 	},
 	ButtonText: {
-		bottom: 30,
+		bottom: 20,
 		textAlign: 'center',
 		fontWeight: 'bold',
 		height: 50,
