@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import {Header} from 'components/common/header.js';
+import {Strum} from 'components/common/strum.js';
 import { Actions } from 'react-native-router-flux';
 import {COLORS} from 'constants/styles.js';
 import { Audio } from 'expo';
@@ -17,7 +18,9 @@ class Detail extends React.Component {
     }
 
     gotoHome = () => {
-        this.audioPlayer.stopAsync();
+        if(this.state.note !== ''){
+            this.audioPlayer.stopAsync();
+        }
         Actions.home()
     }
 
@@ -136,12 +139,7 @@ class Detail extends React.Component {
         return(
             <View style={styles.Detail}>
                 <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome}/>
-				<View style={{justifyContent: 'center', alignItems: 'center',}}>
-					<TouchableOpacity onPress={this.onPressButton}>
-						<Image style={styles.Button} source={require('./images/button.png')}/>
-						<Text style={styles.ButtonText}>Tune</Text>
-					</TouchableOpacity>
-				</View>
+				<Strum notes={splitNotes} />
                 <View style={styles.Fret}>
                     <Image style={styles.Fret} source={require('./images/fret2.jpg')} />
 						<View style={{flex:1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
@@ -154,11 +152,11 @@ class Detail extends React.Component {
 						</View>
                 </View>
 				<View style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
-					<Text style={styles.BottomText}>Click on a SINGLE NOTE to hear that note played on</Text>
-					<Text style={styles.BottomText}>a loop. Click it again to stop the loop.</Text>
+					<Text style={styles.BottomText}>Click on a SINGLE NOTE to hear that note played</Text>
+					<Text style={styles.BottomText}>on a loop. Click it again to stop the loop.</Text>
 					<Text style={styles.BottomText}></Text>
-					<Text style={styles.BottomText}>Click on TUNE for each note to be played five</Text>
-					<Text style={styles.BottomText}>times. Click it again to stop the tuning cycle.</Text>
+					<Text style={styles.BottomText}>Click on STRUM to hear all six notes played</Text>
+					<Text style={styles.BottomText}>in a single strum.</Text>
 				</View>
             </View>
         );
@@ -195,7 +193,7 @@ const styles = StyleSheet.create({
 		color: COLORS.BLUE.BLUE,
 	},
 	Button: {
-        marginTop: 20,
+        marginTop: 25,
 		bottom: 3,
 		height: 35,
 		width: 100,
@@ -211,7 +209,8 @@ const styles = StyleSheet.create({
 	},
 	BottomText: {
 		fontWeight: 'bold',
-		fontSize: 15,
+        fontSize: 15,
+        top: -50
 	}
 });
 
