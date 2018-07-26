@@ -213,6 +213,7 @@ const styles = StyleSheet.create({
 		fontSize: 17,
         fontSize: 15,
         top: -50
+	}
 });
 
 export {Detail};
