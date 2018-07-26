@@ -203,8 +203,9 @@ const styles = StyleSheet.create({
 		color: COLORS.WHITE.WHITE,
 	},
 	BottomText: {
+		top: -50,
 		fontWeight: 'bold',
-		fontSize: 15,
+		fontSize: 17,
 	}
 });
 
