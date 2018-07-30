@@ -13,7 +13,7 @@ class About extends React.Component {
             <View style={styles.About}>
                 <Header title="About the App" gotoHome={this.gotoHome} showAbout={false}/>
                 <Text style={styles.Text}>This app was create by Keyhole Software using React Native elements and components.</Text>
-                <Text style={styles.Text}>Click on a tuning to tune with that setting.</Text>
+                <Text style={styles.Text}>Click on a tuning to listen to the belonging notes.</Text>
             </View>
         );
     }

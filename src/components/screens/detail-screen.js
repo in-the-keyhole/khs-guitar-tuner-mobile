@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import {Header} from 'components/common/header.js';
-import {Strum} from 'components/common/strum.js';
+import {Tuner} from 'components/common/tuner.js';
 import { Actions } from 'react-native-router-flux';
 import {COLORS} from 'constants/styles.js';
 import { Audio } from 'expo';
@@ -20,6 +20,11 @@ class Detail extends React.Component {
     gotoHome = () => {
         if(this.state.note !== ''){
             this.audioPlayer.stopAsync();
+        }
+        if(global.timeouts){
+            global.timeouts.forEach(t => {
+                clearTimeout(t);
+            })
         }
         Actions.home()
     }
@@ -129,34 +134,35 @@ class Detail extends React.Component {
 
     render(){
         let splitNotes = global.notes.split(',');
-        let note0 = splitNotes[0] + '0';
-        let note1 = splitNotes[1] + '1';
-        let note2 = splitNotes[2] + '2';
-        let note3 = splitNotes[3] + '3';
-        let note4 = splitNotes[4] + '4';
-        let note5 = splitNotes[5] + '5';
+        let noteIndex = [];
+        noteIndex.push(splitNotes[0] + '0');
+        noteIndex.push(splitNotes[1] + '1');
+        noteIndex.push(splitNotes[2] + '2');
+        noteIndex.push(splitNotes[3] + '3');
+        noteIndex.push(splitNotes[4] + '4');
+        noteIndex.push(splitNotes[5] + '5');
 
         return(
             <View style={styles.Detail}>
                 <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome}/>
-				<Strum notes={splitNotes} />
+				<Tuner notes={noteIndex} />
                 <View style={styles.Fret}>
                     <Image style={styles.Fret} source={require('./images/fret2.jpg')} />
 						<View style={{flex:1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-							<Text style={this.ifPlayingNote(note0) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(note0) ? this.stopSound() : this.playSound(note0)}>{splitNotes[0].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(note1) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(note1) ? this.stopSound() : this.playSound(note1)}>{splitNotes[1].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(note2) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(note2) ? this.stopSound() : this.playSound(note2)}>{splitNotes[2].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(note3) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(note3) ? this.stopSound() : this.playSound(note3)}>{splitNotes[3].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(note4) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(note4) ? this.stopSound() : this.playSound(note4)}>{splitNotes[4].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(note5) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(note5) ? this.stopSound() : this.playSound(note5)}>{splitNotes[5].toUpperCase()}</Text>
+							<Text style={this.ifPlayingNote(noteIndex[0]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[0]) ? this.stopSound() : this.playSound(noteIndex[0])}>{splitNotes[0].toUpperCase()}</Text>
+							<Text style={this.ifPlayingNote(noteIndex[1]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[1]) ? this.stopSound() : this.playSound(noteIndex[1])}>{splitNotes[1].toUpperCase()}</Text>
+							<Text style={this.ifPlayingNote(noteIndex[2]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[2]) ? this.stopSound() : this.playSound(noteIndex[2])}>{splitNotes[2].toUpperCase()}</Text>
+							<Text style={this.ifPlayingNote(noteIndex[3]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[3]) ? this.stopSound() : this.playSound(noteIndex[3])}>{splitNotes[3].toUpperCase()}</Text>
+							<Text style={this.ifPlayingNote(noteIndex[4]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[4]) ? this.stopSound() : this.playSound(noteIndex[4])}>{splitNotes[4].toUpperCase()}</Text>
+							<Text style={this.ifPlayingNote(noteIndex[5]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[5]) ? this.stopSound() : this.playSound(noteIndex[5])}>{splitNotes[5].toUpperCase()}</Text>
 						</View>
                 </View>
 				<View style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
-					<Text style={styles.BottomText}>Click on a SINGLE NOTE to hear that note played</Text>
+					<Text style={styles.BottomText}>Click on a NOTE to hear that note played</Text>
 					<Text style={styles.BottomText}>on a loop. Click it again to stop the loop.</Text>
 					<Text style={styles.BottomText}></Text>
-					<Text style={styles.BottomText}>Click on STRUM to hear all six notes played</Text>
-					<Text style={styles.BottomText}>in a single strum.</Text>
+					<Text style={styles.BottomText}>Click on TUNE for each note to be played</Text>
+                    <Text style={styles.BottomText}>five times. Click it again to stop the tuning cycle.</Text>
 				</View>
             </View>
         );
@@ -179,7 +185,7 @@ const styles = StyleSheet.create({
 		width: 35,
 		textAlign: 'center',
 		fontWeight: 'bold',
-		height: 100,
+		height: 50,
 		fontSize: 23,
 		color: COLORS.WHITE.WHITE,
     },
@@ -188,7 +194,7 @@ const styles = StyleSheet.create({
 		width: 35,
 		textAlign: 'center',
 		fontWeight: 'bold',
-		height: 100,
+		height: 50,
 		fontSize: 23,
 		color: COLORS.BLUE.BLUE,
 	},

@@ -5,6 +5,6 @@
 	"splash": {
 	"image" : "./splashScreen.png",
 	 "resizeMode": "cover"
-  },
+  }
 }
 }
