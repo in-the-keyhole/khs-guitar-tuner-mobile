@@ -151,8 +151,8 @@ class Detail extends React.Component {
 							<Text style={this.ifPlayingNote(noteIndex[1]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[1]) ? this.stopSound() : this.playSound(noteIndex[1])}>{splitNotes[1].toUpperCase()}</Text>
 							<Text style={this.ifPlayingNote(noteIndex[2]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[2]) ? this.stopSound() : this.playSound(noteIndex[2])}>{splitNotes[2].toUpperCase()}</Text>
 							<Text style={this.ifPlayingNote(noteIndex[3]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[3]) ? this.stopSound() : this.playSound(noteIndex[3])}>{splitNotes[3].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(noteIndex[4]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[4]) ? this.stopSound() : this.playSound(noteIndex[4])}>{' ' + splitNotes[4].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(noteIndex[5]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[5]) ? this.stopSound() : this.playSound(noteIndex[5])}>{' ' + splitNotes[5].toUpperCase()}</Text>
+							<Text style={this.ifPlayingNote(noteIndex[4]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[4]) ? this.stopSound() : this.playSound(noteIndex[4])}>{splitNotes[4].toUpperCase()}</Text>
+							<Text style={this.ifPlayingNote(noteIndex[5]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[5]) ? this.stopSound() : this.playSound(noteIndex[5])}>{splitNotes[5].toUpperCase()}</Text>
 						</View>
                 </View>
 				<View style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>

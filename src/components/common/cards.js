@@ -11,22 +11,20 @@ class Cards extends React.Component{
         };
 	}
     render() {
-		let notesIndex = -1;
         return (
             <Card containerStyle={styles.Card} >
             {
               this.state.descriptions.map((t, i) => {
-				notesIndex++;
                 return (
                   <ListItem
 					containerStyle={styles.ListItemStyle}
                     key={i}
                     title={t}
                     titleStyle={styles.ListItemTitle}
-                    subtitle={this.state.notes[notesIndex]}
+                    subtitle={this.state.notes[i]}
                     onPress={()=> {
                         global.description = t;
-                        global.notes = this.state.notes[notesIndex];
+                        global.notes = this.state.notes[i];
                         this.props.gotoDetail();
                     }}
                   />
