@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
-import { Header } from 'components/common/header';
-import { COLORS } from 'constants/styles';
+import { Header } from '../common/header';
 import { Actions } from 'react-native-router-flux';
 
 class About extends React.Component {
@@ -23,7 +22,7 @@ class About extends React.Component {
 
 const styles = StyleSheet.create({
     About: {
-        backgroundColor: COLORS.WHITE.OFFSET,
+        backgroundColor: '#e6e6e6',
         paddingBottom: 1300
     },
     Text: {

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { COLORS } from 'constants/styles';
 import { TouchableWithoutFeedback } from 'react-native';
 
 class Header extends React.Component {
@@ -13,12 +12,12 @@ class Header extends React.Component {
                 { this.props.showAbout ? 
                 <TouchableWithoutFeedback onPress={() => this.props.gotoAbout()}>
                     <IconContainer style>
-                        <Icon name={'info'} size={30} color={COLORS.WHITE.WHITE} />
+                        <Icon name={'info'} size={30} color={'#FFFFFF'} />
                     </IconContainer>
                 </TouchableWithoutFeedback> : 
                 <TouchableWithoutFeedback onPress={() => this.props.gotoHome()}>
                     <IconContainer style>
-                        <Icon name={'home'} size={30} color={COLORS.WHITE.WHITE} />
+                        <Icon name={'home'} size={30} color={'#FFFFFF'} />
                     </IconContainer>
                 </TouchableWithoutFeedback>
                 }
@@ -32,7 +31,7 @@ const Container = styled.View`
   flex-direction: row;
   height: 60;
   align-items: center;
-  background-color: ${COLORS.BLUE.BLUE};
+  background-color: ${'#0d47a1'};
   justify-content: space-between;
 `;
 
@@ -43,7 +42,7 @@ const IconContainer = styled.View`
 `;
 
 const TitleContainer = styled.Text`
-    color: ${COLORS.WHITE.WHITE};
+    color: ${'#FFFFFF'};
     padding-left: 15;
     padding-top: 20;
 `;

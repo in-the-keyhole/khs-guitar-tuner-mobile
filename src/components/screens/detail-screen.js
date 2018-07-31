@@ -1,9 +1,8 @@
 import React from 'react';
 import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import {Header} from 'components/common/header.js';
-import {Tuner} from 'components/common/tuner.js';
+import {Header} from '../common/header.js';
+import {Tuner} from '../common/tuner.js';
 import { Actions } from 'react-native-router-flux';
-import {COLORS} from 'constants/styles.js';
 import { Audio } from 'expo';
 
 class Detail extends React.Component {
@@ -170,7 +169,7 @@ class Detail extends React.Component {
 
 const styles = StyleSheet.create({
     Detail: {
-        backgroundColor: COLORS.WHITE.OFFSET,
+        backgroundColor: '#e6e6e6',
         height: 1500,
         
     },
@@ -186,7 +185,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		height: 50,
 		fontSize: 23,
-		color: COLORS.WHITE.WHITE,
+		color: '#FFFFFF',
     },
     Playing: {
 		bottom: 175,
@@ -195,7 +194,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		height: 50,
 		fontSize: 23,
-		color: COLORS.BLUE.BLUE,
+		color: '#0d47a1',
 	},
 	Button: {
         marginTop: 25,
@@ -210,7 +209,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		height: 50,
 		fontSize: 16,
-		color: COLORS.WHITE.WHITE,
+		color: '#FFFFFF',
 	},
 	BottomText: {
 		top: -420,

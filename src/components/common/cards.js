@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
-import { COLORS } from 'constants/styles';
 
 class Cards extends React.Component{
 	constructor(props) {
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
     Card: {
         padding: 0,
         marginBottom: 20,
-        backgroundColor: COLORS.GREY.GREY,
+        backgroundColor: '#263238',
     },
 	ListItemStyle: {
       height: 70,
