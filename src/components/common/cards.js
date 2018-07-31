@@ -12,7 +12,6 @@ class Cards extends React.Component{
 	}
     render() {
 		let notesIndex = -1;
-		console.log(this.state.notes);
         return (
             <Card containerStyle={styles.Card} >
             {
