@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
+This app is a mobile app version of the Keyhole Software Guitar Tuner found at http://www.khsguitartuner.com/
+Using React Native, this app can run on both IOS and Android phones. It pulls the tunings from the websites server and displays them on the app to be played.
+
+Below are the instructions to run this app on a local machine.
+
+
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
 
 ## Table of Contents
