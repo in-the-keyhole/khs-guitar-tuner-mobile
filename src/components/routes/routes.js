@@ -44,17 +44,15 @@ class Routes extends React.Component {
 	getData = () => {
 		let jsonDescription = [];
 		let jsonNotes = [];
-		let buffer = [];
 		 AsyncStorage.getItem('tunings')
 		 .then(req => {
 			 let json = JSON.parse(req);
 			 json.map((t) => {
 				 jsonDescription.push(t.description);
 				 jsonNotes.push(t.notes);
-				
-				buffer = [];
 			 })
-			this.setState({descriptions: jsonDescription, notes: jsonNotes});
+			this.setState({descriptions: jsonDescription});
+			this.setState({ notes: jsonNotes });
 		 })
 		 
 	}

@@ -11,11 +11,13 @@ class Cards extends React.Component{
         };
 	}
     render() {
-		let notesIndex = 0;
+		let notesIndex = -1;
+		console.log(this.state.notes);
         return (
             <Card containerStyle={styles.Card} >
             {
               this.state.descriptions.map((t, i) => {
+				notesIndex++;
                 return (
                   <ListItem
 					containerStyle={styles.ListItemStyle}
@@ -30,7 +32,7 @@ class Cards extends React.Component{
                     }}
                   />
                 );
-				notesIndex++;
+				
               })
             }
           </Card>
