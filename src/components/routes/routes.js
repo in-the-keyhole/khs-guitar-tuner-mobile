@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Scene, Actions } from 'react-native-router-flux'
-import {Home} from 'components/screens/home-screen.js';
-import {About} from 'components/screens/about-screen.js';
-import {Detail} from 'components/screens/detail-screen.js';
+import {Home} from '../screens/home-screen.js';
+import {About} from '../screens/about-screen.js';
+import {Detail} from '../screens/detail-screen.js';
 import { AsyncStorage, NetInfo } from "react-native"
 
 class Routes extends React.Component {

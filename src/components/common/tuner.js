@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, TouchableOpacity, Image, Text} from 'react-native';
 import { Audio } from 'expo';
-import { COLORS } from 'constants/styles.js';
 
 class Tuner extends React.Component {
     constructor(props){
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		height: 50,
 		fontSize: 16,
-		color: COLORS.WHITE.WHITE,
+		color: '#FFFFFF',
 	},
 })
 
