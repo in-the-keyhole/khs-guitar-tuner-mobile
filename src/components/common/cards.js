@@ -7,28 +7,31 @@ class Cards extends React.Component{
 	constructor(props) {
         super(props);
         this.state = {
-            tunings: this.props.tunings
+            descriptions: this.props.descriptions,
+			notes: this.props.notes
         };
 	}
     render() {
+		let notesIndex = 0;
         return (
             <Card containerStyle={styles.Card} >
             {
-              this.state.tunings.map((t, i) => {
+              this.state.descriptions.map((t, i) => {
                 return (
                   <ListItem
 					containerStyle={styles.ListItemStyle}
                     key={i}
-                    title={t.description}
+                    title={t}
                     titleStyle={styles.ListItemTitle}
-                    subtitle={t.notes}
+                    subtitle={this.state.notes[notesIndex]}
                     onPress={()=> {
-                        global.description = t.description;
-                        global.notes = t.notes;
+                        global.description = t;
+                        global.notes = this.state.notes[notesIndex];
                         this.props.gotoDetail();
                     }}
                   />
                 );
+				notesIndex++;
               })
             }
           </Card>

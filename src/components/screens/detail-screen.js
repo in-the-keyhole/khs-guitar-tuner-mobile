@@ -10,7 +10,6 @@ class Detail extends React.Component {
     constructor(props){
         super(props);
         this.state ={
-            tunings: this.props.tunings,
             note: '',
             playing: false
         }
@@ -210,12 +209,9 @@ const styles = StyleSheet.create({
 	BottomText: {
 		top: -50,
 		fontWeight: 'bold',
-<<<<<<< HEAD
 		fontSize: 17,
-=======
         fontSize: 15,
         top: -50
->>>>>>> abef5c864140827f4682a7b65a33fb78e4766803
 	}
 });
 
