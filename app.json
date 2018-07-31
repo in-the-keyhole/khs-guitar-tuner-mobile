@@ -1,13 +1,11 @@
 {
   "expo": {
-<<<<<<< HEAD
 	"sdkVersion": "27.0.0",
 	"orientation": "portrait",
 	"splash": {
 		"image" : "./splashScreen.png",
 		"resizeMode": "contain",
 		"backgroundColor": "#0d47a1"
-=======
 		"name": "KHS Guitar Tuner",
 		"version": "1.0.0",
 		"slug": "khs-guitar-tuner",
@@ -28,13 +26,6 @@
 		"android": {
 			"package": "khs-guitar-tuner",
 			"icon": "./android/app/src/main/res/playstore-icon.png"
->>>>>>> 4fed0d6e45e5b65f25572767394a2766c8905318
-		}
-	"ios" {
-		"bundleIdentifier": "com.keyholesoftware.khsguitartuner"
-		},
-	"android": {
-		"package": "com.keyholesoftware.khsguitartuner"
 		}
 	}
 }
