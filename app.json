@@ -4,7 +4,8 @@
 	"orientation": "portrait",
 	"splash": {
 	"image" : "./splashScreen.png",
-	 "resizeMode": "cover"
+	 "resizeMode": "contain",
+	 "backgroundColor": "#0d47a1"
   }
 }
 }
