@@ -54,9 +54,7 @@ class Routes extends React.Component {
 				
 				buffer = [];
 			 })
-			this.setState({descriptions: jsonDescription});
-			this.setState({notes: jsonNotes});
-			console.log('state is set');
+			this.setState({descriptions: jsonDescription, notes: jsonNotes});
 		 })
 		 
 	}
@@ -74,4 +72,4 @@ class Routes extends React.Component {
     }
     
 }
- export {Routes};
+export {Routes};

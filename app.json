@@ -1,11 +1,25 @@
 {
   "expo": {
+		"name": "KHS Guitar Tuner",
+		"version": "1.0.0",
+		"slug": "khs-guitar-tuner",
+		"icon": "./android/app/src/main/res/playstore-icon.png",
+		"primaryColor": "#0d47a1",
     "sdkVersion": "27.0.0",
-	"orientation": "portrait",
-	"splash": {
-	"image" : "./splashScreen.png",
-	 "resizeMode": "contain",
-	 "backgroundColor": "#0d47a1"
-  }
-}
+		"orientation": "portrait",
+		"splash": {
+			"image" : "./splashScreen.png",
+	 		"resizeMode": "contain",
+	 		"backgroundColor": "#0d47a1"
+		},
+		"ios":	{
+			"bundleIdentifier": "khs_guitar_tuner",
+			"icon": "./ios/AppIcon.appiconset/ItunesArtwork@2x.png",
+			"supportsTablet": false
+		},
+		"android": {
+			"package": "khs-guitar-tuner",
+			"icon": "./android/app/src/main/res/playstore-icon.png"
+		}
+	}
 }

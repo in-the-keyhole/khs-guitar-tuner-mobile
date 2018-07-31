@@ -12,8 +12,10 @@ class About extends React.Component {
         return (
             <View style={styles.About}>
                 <Header title="About the App" gotoHome={this.gotoHome} showAbout={false}/>
-                <Text style={styles.Text}>This app was create by Keyhole Software using React Native elements and components.</Text>
-                <Text style={styles.Text}>Click on a tuning to listen to the belonging notes.</Text>
+                <Text style={styles.Text}>Click on a tuning to listen and follow the instructions to begin tuning your guitar.</Text>
+                <Text style={styles.Text}>This mobile app was create by Keyhole Software using React Native elements and components.</Text>
+                <Text style={styles.Text}>Visit our web application at: www.khsguitartuner.com</Text>
+                
             </View>
         );
     }
@@ -22,10 +24,10 @@ class About extends React.Component {
 const styles = StyleSheet.create({
     About: {
         backgroundColor: COLORS.WHITE.OFFSET,
-        paddingBottom: 520
+        paddingBottom: 1300
     },
     Text: {
-        fontSize: 15,
+        fontSize: 20,
         marginTop: 20,
         marginLeft: 20,
         marginRight: 20
