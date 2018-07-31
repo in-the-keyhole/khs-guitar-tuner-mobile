@@ -60,7 +60,7 @@ class Routes extends React.Component {
     render(){
         return(
             <Router >
-                <Scene key = "root">
+                <Scene key = "root" gesturesEnabled={false}>
                     <Scene key = "home" component = {this.myHome} title = "Home" initial = {true} hideNavBar={true}/>
                     <Scene key = "about" component = {About} title = "About" hideNavBar={true}/>
                     <Scene key = "detail" component = {this.myDetail} title = "Detail" hideNavBar={true}/>
