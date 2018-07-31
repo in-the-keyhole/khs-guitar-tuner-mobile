@@ -56,7 +56,6 @@ class Routes extends React.Component {
 			 })
 			this.setState({descriptions: jsonDescription});
 			this.setState({notes: jsonNotes});
-			console.log('state is set');
 		 })
 		 
 	}
