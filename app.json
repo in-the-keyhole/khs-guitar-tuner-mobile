@@ -13,10 +13,12 @@
 	 		"backgroundColor": "#0d47a1"
 		},
 		"ios":	{
+			"bundleIdentifier": "com.keyholesoftware.khsguitartuner",
 			"icon": "./ios/AppIcon.appiconset/ItunesArtwork@2x.png",
 			"supportsTablet": false
 		},
 		"android": {
+			"package": "com.keyholesoftware.khsguitartuner",
 			"icon": "./android/app/src/main/res/playstore-icon.png"
 		}
 	}
