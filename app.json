@@ -1,9 +1,10 @@
 {
   "expo": {
 		"name": "KHS Guitar Tuner",
+		"description": "Basic app for tuning guitars",
 		"version": "1.0.0",
 		"slug": "khs-guitar-tuner",
-		"icon": "./android/app/src/main/res/playstore-icon.png",
+		"icon": "./ios/AppIcon.appiconset/ItunesArtwork@2x.png",
 		"primaryColor": "#0d47a1",
     "sdkVersion": "27.0.0",
 		"orientation": "portrait",
