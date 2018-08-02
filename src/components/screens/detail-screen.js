@@ -3,6 +3,7 @@ import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import {Header} from '../common/header.js';
 import {Tuner} from '../common/tuner.js';
 import { Actions } from 'react-native-router-flux';
+import {BackAndroid} from 'react-native';
 import { Audio } from 'expo';
 
 class Detail extends React.Component {
@@ -13,6 +14,14 @@ class Detail extends React.Component {
             playing: false
         }
         this.audioPlayer = new Audio.Sound();
+    }
+
+    componentDidMount() {
+        BackAndroid.addEventListener('hardwareBackPress', () => {return true});
+    }
+      
+    componentWillUnmount() {
+        BackAndroid.removeEventListener('hardwareBackPress', () => {return true});
     }
 
     gotoHome = () => {
