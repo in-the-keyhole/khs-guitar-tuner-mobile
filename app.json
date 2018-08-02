@@ -2,7 +2,7 @@
   "expo": {
 		"name": "KHS Guitar Tuner",
 		"description": "Basic app for tuning guitars",
-		"version": "1.0.0",
+		"version": "1.0.2",
 		"slug": "khs-guitar-tuner",
 		"icon": "./ios/AppIcon.appiconset/ItunesArtwork@2x.png",
 		"primaryColor": "#0d47a1",
