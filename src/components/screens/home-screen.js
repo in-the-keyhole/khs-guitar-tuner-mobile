@@ -17,7 +17,7 @@ class Home extends React.Component {
     return (
       <ScrollView style={styles.view}>
         <Header title="KHS Guitar Tuner" gotoAbout={this.goToAbout} showAbout={true}/>
-        <Cards descriptions={this.props.descriptions} notes={this.props.notes} gotoDetail={this.gotoDetail}/>
+        <Cards tunings={this.props.tunings} gotoDetail={this.gotoDetail}/>
       </ScrollView>
     );
   }
