@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
+import {DESCRIPTIONS} from './constants/descriptions';
+import {NOTES} from './constants/descriptions';
 
 class Cards extends React.Component{
 	constructor(props) {
@@ -11,6 +13,12 @@ class Cards extends React.Component{
         };
 	}
     render() {
+        if(this.props.descriptions == null){
+            this.setState({descriptions: DESCRIPTIONS});
+        }
+        if(this.props.notes == null){
+            this.setState({notes: NOTES});
+        }
         return (
             <Card containerStyle={styles.Card} >
             {
