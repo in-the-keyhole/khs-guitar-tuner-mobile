@@ -3,7 +3,7 @@ import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import {Header} from '../common/header.js';
 import {Tuner} from '../common/tuner.js';
 import { Actions } from 'react-native-router-flux';
-import {BackAndroid} from 'react-native';
+import {BackHandler} from 'react-native';
 import { Audio } from 'expo';
 
 class Detail extends React.Component {
@@ -17,11 +17,11 @@ class Detail extends React.Component {
     }
 
     componentDidMount() {
-        BackAndroid.addEventListener('hardwareBackPress', () => {return true});
+        BackHandler.addEventListener('hardwareBackPress', () => {return true});
     }
-      
+
     componentWillUnmount() {
-        BackAndroid.removeEventListener('hardwareBackPress', () => {return true});
+        BackHandler.removeEventListener('hardwareBackPress', () => {return true});
     }
 
     gotoHome = () => {
@@ -118,7 +118,7 @@ class Detail extends React.Component {
             await this.audioPlayer.setIsLoopingAsync(true);
             await this.audioPlayer.playAsync();
         } catch (err) {
-        
+
         }
     }
 
@@ -134,7 +134,7 @@ class Detail extends React.Component {
             return false;
         }
     }
-	
+
 	onPressButton = () => {
 		alert('You Pressed The Button');
 	}
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     Detail: {
         backgroundColor: '#e6e6e6',
         height: 1500,
-        
+
     },
     Fret: {
         marginTop: -15,

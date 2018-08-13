@@ -9,17 +9,17 @@ class Cards extends React.Component{
             tunings: this.props.tunings,
         };
 	}
-    render() {
+render() {
         return (
             <Card containerStyle={styles.Card} >
             {
               this.state.tunings.map((t, i) => {
                 return (
                   <ListItem
-					containerStyle={styles.ListItemStyle}
+                        containerStyle={styles.ListItemStyle}
                     key={i}
                     title={t.description}
-                    titleStyle={styles.ListItemTitle}
+                        titleStyle={styles.ListItemTitle}
                     subtitle={t.notes}
                     onPress={()=> {
                         global.description = t.description;
@@ -43,13 +43,12 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     Card: {
-        padding: 0,
-        marginBottom: 20,
+        flex: 1,
+        marginBottom: 15,
         backgroundColor: '#263238',
     },
-	ListItemStyle: {
-      height: 70,
-      marginTop: 10
+    ListItemStyle: {
+        height: '12.5%',
     }
 })
 
