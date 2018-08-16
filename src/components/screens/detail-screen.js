@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import {Header} from '../common/header.js';
@@ -5,6 +7,7 @@ import {Tuner} from '../common/tuner.js';
 import { Actions } from 'react-native-router-flux';
 import {BackHandler} from 'react-native';
 import { Audio } from 'expo';
+import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
 class Detail extends React.Component {
     constructor(props){
@@ -149,29 +152,39 @@ class Detail extends React.Component {
         noteIndex.push(splitNotes[4] + '4');
         noteIndex.push(splitNotes[5] + '5');
 
+        const config = {
+            velocityThreshold: 0.3,
+            directionalOffsetThreshold: 80
+        };
+
         return(
-            <View style={styles.Detail}>
-                <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome}/>
-				<Tuner notes={noteIndex} />
-                <View style={styles.Fret}>
-                    <Image style={styles.Fret} source={require('./images/fret2.jpg')} />
-						<View style={{flex:1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-							<Text style={this.ifPlayingNote(noteIndex[0]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[0]) ? this.stopSound() : this.playSound(noteIndex[0])}>{splitNotes[0].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(noteIndex[1]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[1]) ? this.stopSound() : this.playSound(noteIndex[1])}>{splitNotes[1].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(noteIndex[2]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[2]) ? this.stopSound() : this.playSound(noteIndex[2])}>{splitNotes[2].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(noteIndex[3]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[3]) ? this.stopSound() : this.playSound(noteIndex[3])}>{splitNotes[3].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(noteIndex[4]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[4]) ? this.stopSound() : this.playSound(noteIndex[4])}>{splitNotes[4].toUpperCase()}</Text>
-							<Text style={this.ifPlayingNote(noteIndex[5]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[5]) ? this.stopSound() : this.playSound(noteIndex[5])}>{splitNotes[5].toUpperCase()}</Text>
-						</View>
+            <GestureRecognizer
+                onSwipe={this.gotoHome}
+                config={config}
+            >
+                <View style={styles.Detail}>
+                    <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome} />
+                    <Tuner notes={noteIndex} />
+                    <View style={styles.Fret}>
+                        <Image style={styles.Fret} source={require('./images/fret2.jpg')} />
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <Text style={this.ifPlayingNote(noteIndex[0]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[0]) ? this.stopSound() : this.playSound(noteIndex[0])}>{splitNotes[0].toUpperCase()}</Text>
+                            <Text style={this.ifPlayingNote(noteIndex[1]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[1]) ? this.stopSound() : this.playSound(noteIndex[1])}>{splitNotes[1].toUpperCase()}</Text>
+                            <Text style={this.ifPlayingNote(noteIndex[2]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[2]) ? this.stopSound() : this.playSound(noteIndex[2])}>{splitNotes[2].toUpperCase()}</Text>
+                            <Text style={this.ifPlayingNote(noteIndex[3]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[3]) ? this.stopSound() : this.playSound(noteIndex[3])}>{splitNotes[3].toUpperCase()}</Text>
+                            <Text style={this.ifPlayingNote(noteIndex[4]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[4]) ? this.stopSound() : this.playSound(noteIndex[4])}>{splitNotes[4].toUpperCase()}</Text>
+                            <Text style={this.ifPlayingNote(noteIndex[5]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[5]) ? this.stopSound() : this.playSound(noteIndex[5])}>{splitNotes[5].toUpperCase()}</Text>
+                        </View>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={styles.BottomText}>Click on a NOTE to hear that note played</Text>
+                        <Text style={styles.BottomText}>on a loop. Click it again to stop the loop.</Text>
+                        <Text style={styles.BottomText}></Text>
+                        <Text style={styles.BottomText}>Click on TUNE for each note to be played</Text>
+                        <Text style={styles.BottomText}>five times. Click it again to stop the tuning cycle.</Text>
+                    </View>
                 </View>
-				<View style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
-					<Text style={styles.BottomText}>Click on a NOTE to hear that note played</Text>
-					<Text style={styles.BottomText}>on a loop. Click it again to stop the loop.</Text>
-					<Text style={styles.BottomText}></Text>
-					<Text style={styles.BottomText}>Click on TUNE for each note to be played</Text>
-                    <Text style={styles.BottomText}>five times. Click it again to stop the tuning cycle.</Text>
-				</View>
-            </View>
+            </GestureRecognizer>
         );
     }
 }
