@@ -1,25 +1,25 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import { Header } from '../common/header';
-import { Actions } from 'react-native-router-flux';
+import { useNavigation } from '@react-navigation/native';
 
-class About extends React.Component {
-    gotoHome = () => {
-        Actions.home();
-    }
-    render(){
-        return (
-            <View style={styles.About}>
-                <Header title="About the App" gotoHome={this.gotoHome} showAbout={false}/>
-                <Text style={styles.Header}>KHS Guitar Tuner</Text>
-                <Text style={styles.Text}>Click on a tuning to listen and follow the instructions to begin tuning your guitar.</Text>
-                <Text style={styles.Text}>This mobile app was create by Keyhole Software using React Native elements and components.</Text>
-                <Text style={styles.Text}>Visit our web application at: www.khsguitartuner.com</Text>
-                
-            </View>
-        );
-    }
-}
+const About = () => {
+    const navigation = useNavigation();
+
+    const gotoHome = () => {
+        navigation.navigate('Home');
+    };
+
+    return (
+        <View style={styles.About}>
+            <Header title="About the App" gotoHome={gotoHome} showAbout={false} />
+            <Text style={styles.Header}>KHS Guitar Tuner</Text>
+            <Text style={styles.Text}>Click on a tuning to listen and follow the instructions to begin tuning your guitar.</Text>
+            <Text style={styles.Text}>This mobile app was created by Keyhole Software using React Native elements and components.</Text>
+            <Text style={styles.Text}>Visit our web application at: www.khsguitartuner.com</Text>
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     About: {
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export {About};
+export default  About ;

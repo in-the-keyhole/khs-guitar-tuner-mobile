@@ -7,16 +7,16 @@ class Header extends React.Component {
     render(){
         return(
             <Container>
-                <TitleContainer style={{fontWeight: 'bold', fontSize: 20}}>{this.props.title}</TitleContainer>
+                <TitleContainer>{this.props.title}</TitleContainer>
 
-                { this.props.showAbout ? 
+                {this.props.showAbout ?
                 <TouchableWithoutFeedback onPress={() => this.props.gotoAbout()}>
-                    <IconContainer style>
+                    <IconContainer>
                         <Icon name={'info'} size={30} color={'#FFFFFF'} />
                     </IconContainer>
-                </TouchableWithoutFeedback> : 
+                </TouchableWithoutFeedback> :
                 <TouchableWithoutFeedback onPress={() => this.props.gotoHome()}>
-                    <IconContainer style>
+                    <IconContainer>
                         <Icon name={'home'} size={30} color={'#FFFFFF'} />
                     </IconContainer>
                 </TouchableWithoutFeedback>
@@ -27,24 +27,25 @@ class Header extends React.Component {
 }
 
 const Container = styled.View`
-  display: flex;
   flex-direction: row;
-  height: 60;
+  height: 60px;
   align-items: center;
-  background-color: ${'#0d47a1'};
+  background-color: #0d47a1;
   justify-content: space-between;
 `;
 
 const IconContainer = styled.View`
-  padding-left: 10;
-  padding-right: 20;
-  padding-top: 20;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 20px;
 `;
 
 const TitleContainer = styled.Text`
-    color: ${'#FFFFFF'};
-    padding-left: 15;
-    padding-top: 20;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 20px;
+  padding-left: 15px;
+  padding-top: 20px;
 `;
 
-export {Header};
+export { Header };

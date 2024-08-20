@@ -1,244 +1,271 @@
-'use strict';
+import React, { useEffect, useCallback, useState, useRef } from 'react';
+import { Image, View, StyleSheet, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Header } from '../common/header';
+import { Tuner } from '../common/tuner';
+import { BackHandler } from 'react-native';
+import { Audio } from 'expo-av';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
-import React from 'react';
-import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import {Header} from '../common/header.js';
-import {Tuner} from '../common/tuner.js';
-import { Actions } from 'react-native-router-flux';
-import {BackHandler} from 'react-native';
-import { Audio } from 'expo';
-import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+const Detail = () => {
+  const navigation = useNavigation();
+  const [currentNote, setCurrentNote] = useState('');
+  const audioPlayer = useRef(new Audio.Sound());
+  const [isSoundLoaded, setIsSoundLoaded] = useState(false);
 
-class Detail extends React.Component {
-    constructor(props){
-        super(props);
-        this.state ={
-            note: '',
-            playing: false
-        }
-        this.audioPlayer = new Audio.Sound();
+const stopSound = useCallback(async () => {
+  try {
+    const status = await audioPlayer.current.getStatusAsync();
+    if (status.isLoaded) {
+      await audioPlayer.current.stopAsync();
+      await audioPlayer.current.unloadAsync();
+      setCurrentNote('');
+      setIsSoundLoaded(false);
+    }
+  } catch (err) {
+    console.error(`Error stopping audio: ${err.message}`);
+  }
+}, []);
+
+
+  const gotoHome = useCallback(async () => {
+    await stopSound();
+    navigation.navigate('Home');
+  }, [stopSound, navigation]);
+
+  useEffect(() => {
+    const backHandlerListener = BackHandler.addEventListener('hardwareBackPress', () => {
+      gotoHome();
+      return true;
+    });
+
+    const unsubscribe = navigation.addListener('beforeRemove', () => {
+      gotoHome();
+    });
+
+    return () => {
+      stopSound();
+      backHandlerListener.remove();
+      unsubscribe();
+    };
+  }, [gotoHome, navigation, stopSound]);
+
+  const playSound = async (note) => {
+  try {
+    if (currentNote) {
+      await stopSound();
     }
 
-    componentDidMount() {
-        BackHandler.addEventListener('hardwareBackPress', () => {return true});
+      if (isSoundLoaded) {
+        await audioPlayer.current.unloadAsync();
+      }
+
+    if (!audioPlayer.current) {
+      audioPlayer.current = new Audio.Sound();
     }
 
-    componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', () => {return true});
+    let audioLoaded = false;
+
+    switch (note) {
+      case 'a1':
+        await audioPlayer.current.loadAsync(require('../screens/audio/a-1.mp3'));
+        audioLoaded = true;
+        break;
+      case 'a4':
+        await audioPlayer.current.loadAsync(require('../screens/audio/a-4.mp3'));
+        audioLoaded = true;
+        break;
+      case 'a#4':
+        await audioPlayer.current.loadAsync(require('../screens/audio/a-sharp-4.mp3'));
+        audioLoaded = true;
+        break;
+      case 'b4':
+        await audioPlayer.current.loadAsync(require('../screens/audio/b-4.mp3'));
+        audioLoaded = true;
+        break;
+      case 'c0':
+        await audioPlayer.current.loadAsync(require('../screens/audio/c-0.mp3'));
+        audioLoaded = true;
+        break;
+      case 'c2':
+        await audioPlayer.current.loadAsync(require('../screens/audio/c-2.mp3'));
+        audioLoaded = true;
+        break;
+      case 'c3':
+        await audioPlayer.current.loadAsync(require('../screens/audio/c-3.mp3'));
+        audioLoaded = true;
+        break;
+      case 'c4':
+        await audioPlayer.current.loadAsync(require('../screens/audio/c-4.mp3'));
+        audioLoaded = true;
+        break;
+      case 'c5':
+        await audioPlayer.current.loadAsync(require('../screens/audio/c-5.mp3'));
+        audioLoaded = true;
+        break;
+      case 'c#2':
+        await audioPlayer.current.loadAsync(require('../screens/audio/c-sharp-2.mp3'));
+        audioLoaded = true;
+        break;
+      case 'd0':
+        await audioPlayer.current.loadAsync(require('../screens/audio/d-0.mp3'));
+        audioLoaded = true;
+        break;
+      case 'd1':
+        await audioPlayer.current.loadAsync(require('../screens/audio/d-1.mp3'));
+        audioLoaded = true;
+        break;
+      case 'd2':
+        await audioPlayer.current.loadAsync(require('../screens/audio/d-2.mp3'));
+        audioLoaded = true;
+        break;
+      case 'd5':
+        await audioPlayer.current.loadAsync(require('../screens/audio/d-5.mp3'));
+        audioLoaded = true;
+        break;
+      case 'd#0':
+        await audioPlayer.current.loadAsync(require('../screens/audio/d-sharp-0.mp3'));
+        audioLoaded = true;
+        break;
+      case 'd#5':
+        await audioPlayer.current.loadAsync(require('../screens/audio/d-sharp-5.mp3'));
+        audioLoaded = true;
+        break;
+      case 'e0':
+        await audioPlayer.current.loadAsync(require('../screens/audio/e-0.mp3'));
+        audioLoaded = true;
+        break;
+      case 'e5':
+        await audioPlayer.current.loadAsync(require('../screens/audio/e-5.mp3'));
+        audioLoaded = true;
+        break;
+      case 'f1':
+        await audioPlayer.current.loadAsync(require('../screens/audio/f-1.mp3'));
+        audioLoaded = true;
+        break;
+      case 'f3':
+        await audioPlayer.current.loadAsync(require('../screens/audio/f-3.mp3'));
+        audioLoaded = true;
+        break;
+      case 'f#3':
+        await audioPlayer.current.loadAsync(require('../screens/audio/f-sharp-3.mp3'));
+        audioLoaded = true;
+        break;
+      case 'g1':
+        await audioPlayer.current.loadAsync(require('../screens/audio/g-1.mp3'));
+        audioLoaded = true;
+        break;
+      case 'g3':
+        await audioPlayer.current.loadAsync(require('../screens/audio/g-3.mp3'));
+        audioLoaded = true;
+        break;
+      case 'g#1':
+        await audioPlayer.current.loadAsync(require('../screens/audio/g-sharp-1.mp3'));
+        audioLoaded = true;
+        break;
+      default:
+        alert('Error: Audio for this note does not exist');
+        return;
     }
 
-    gotoHome = () => {
-        if(this.state.note !== ''){
-            this.audioPlayer.stopAsync();
-        }
-        if(global.timeouts){
-            global.timeouts.forEach(t => {
-                clearTimeout(t);
-            })
-        }
-        Actions.home()
+    if (audioLoaded) {
+      setIsSoundLoaded(true);
+      setCurrentNote(note);
+      await audioPlayer.current.setIsLoopingAsync(true);
+      await audioPlayer.current.playAsync();
     }
+  } catch (err) {
+    console.error(`Error playing audio: ${err.message}`);
+  }
+};
 
-    playSound = async (note) => {
-        try {
-            await this.audioPlayer.unloadAsync();
-            if(note === 'a1'){
-                this.setState({note: 'a1', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/a-1.mp3'));
-            }else if(note === 'a4'){
-                this.setState({note: 'a4', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/a-4.mp3'));
-            }else if(note === 'a#4'){
-                this.setState({note: 'a#4', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/a-sharp-4.mp3'));
-            }else if(note === 'b4'){
-                this.setState({note: 'b4', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/b-4.mp3'));
-            }else if(note === 'c0'){
-                this.setState({note: 'c0', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/c-0.mp3'));
-            }else if(note === 'c2'){
-                this.setState({note: 'c2', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/c-2.mp3'));
-            }else if(note === 'c3'){
-                this.setState({note: 'c3', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/c-3.mp3'));
-            }else if(note === 'c4'){
-                this.setState({note: 'c4', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/c-4.mp3'));
-            }else if(note === 'c5'){
-                this.setState({note: 'c5', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/c-5.mp3'));
-            }else if(note === 'c#2'){
-                this.setState({note: 'c#2', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/c-sharp-2.mp3'));
-            }else if(note === 'd0'){
-                this.setState({note: 'd0', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/d-0.mp3'));
-            }else if(note === 'd1'){
-                this.setState({note: 'd1', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/d-1.mp3'));
-            }else if(note === 'd2'){
-                this.setState({note: 'd2', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/d-2.mp3'));
-            }else if(note === 'd5'){
-                this.setState({note: 'd5', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/d-5.mp3'));
-            }else if(note === 'd#0'){
-                this.setState({note: 'd#0', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/d-sharp-0.mp3'));
-            }else if(note === 'd#5'){
-                this.setState({note: 'd#5', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/d-sharp-5.mp3'));
-            }else if(note === 'e0'){
-                this.setState({note: 'e0', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/e-0.mp3'));
-            }else if(note === 'e5'){
-                this.setState({note: 'e5', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/e-5.mp3'));
-            }else if(note === 'f1'){
-                this.setState({note: 'f1', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/f-1.mp3'));
-            }else if(note === 'f3'){
-                this.setState({note: 'f3', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/f-3.mp3'));
-            }else if(note === 'f#3'){
-                this.setState({note: 'f#3', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/f-sharp-3.mp3'));
-            }else if(note === 'g1'){
-                this.setState({note: 'g1', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/g-1.mp3'));
-            }else if(note === 'g3'){
-                this.setState({note: 'g3', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/g-3.mp3'));
-            }else if(note === 'g#1'){
-                this.setState({note: 'g#1', playing: true});
-                await this.audioPlayer.loadAsync(require('./audio/g-sharp-1.mp3'));
-            }else{
-                alert('Error: Audio does not exist');
-            }
 
-            await this.audioPlayer.setIsLoopingAsync(true);
-            await this.audioPlayer.playAsync();
-        } catch (err) {
 
-        }
+  const handleNotePress = (note) => {
+    if (note === currentNote) {
+      stopSound();
+    } else {
+      playSound(note);
     }
+  };
 
-    stopSound = async () => {
-        this.setState({note: '', playing: false});
-        await this.audioPlayer.stopAsync();
-    }
+  const splitNotes = global.notes.split(',');
+  const noteIndex = [
+    `${splitNotes[0]}0`,
+    `${splitNotes[1]}1`,
+    `${splitNotes[2]}2`,
+    `${splitNotes[3]}3`,
+    `${splitNotes[4]}4`,
+    `${splitNotes[5]}5`,
+  ];
 
-    ifPlayingNote = (note) => {
-        if(this.state.note === note && this.state.playing){
-            return true;
-        } else {
-            return false;
-        }
-    }
+  const config = {
+    velocityThreshold: 0.3,
+    directionalOffsetThreshold: 80,
+  };
 
-	onPressButton = () => {
-		alert('You Pressed The Button');
-	}
-
-    render(){
-        let splitNotes = global.notes.split(',');
-        let noteIndex = [];
-        noteIndex.push(splitNotes[0] + '0');
-        noteIndex.push(splitNotes[1] + '1');
-        noteIndex.push(splitNotes[2] + '2');
-        noteIndex.push(splitNotes[3] + '3');
-        noteIndex.push(splitNotes[4] + '4');
-        noteIndex.push(splitNotes[5] + '5');
-
-        const config = {
-            velocityThreshold: 0.3,
-            directionalOffsetThreshold: 80
-        };
-
-        return(
-            <GestureRecognizer
-                onSwipe={this.gotoHome}
-                config={config}
-            >
-                <View style={styles.Detail}>
-                    <Header title={global.description + ' Guitar Tuning'} showAbout={false} gotoHome={this.gotoHome} />
-                    <Tuner notes={noteIndex} />
-                    <View style={styles.Fret}>
-                        <Image style={styles.Fret} source={require('./images/fret2.jpg')} />
-                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <Text style={this.ifPlayingNote(noteIndex[0]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[0]) ? this.stopSound() : this.playSound(noteIndex[0])}>{splitNotes[0].toUpperCase()}</Text>
-                            <Text style={this.ifPlayingNote(noteIndex[1]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[1]) ? this.stopSound() : this.playSound(noteIndex[1])}>{splitNotes[1].toUpperCase()}</Text>
-                            <Text style={this.ifPlayingNote(noteIndex[2]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[2]) ? this.stopSound() : this.playSound(noteIndex[2])}>{splitNotes[2].toUpperCase()}</Text>
-                            <Text style={this.ifPlayingNote(noteIndex[3]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[3]) ? this.stopSound() : this.playSound(noteIndex[3])}>{splitNotes[3].toUpperCase()}</Text>
-                            <Text style={this.ifPlayingNote(noteIndex[4]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[4]) ? this.stopSound() : this.playSound(noteIndex[4])}>{splitNotes[4].toUpperCase()}</Text>
-                            <Text style={this.ifPlayingNote(noteIndex[5]) ? styles.Playing : styles.Stopped} onPress={() => this.ifPlayingNote(noteIndex[5]) ? this.stopSound() : this.playSound(noteIndex[5])}>{splitNotes[5].toUpperCase()}</Text>
-                        </View>
-                    </View>
-                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={styles.BottomText}>Click on a NOTE to hear that note played</Text>
-                        <Text style={styles.BottomText}>on a loop. Click it again to stop the loop.</Text>
-                        <Text style={styles.BottomText}></Text>
-                        <Text style={styles.BottomText}>Click on TUNE for each note to be played</Text>
-                        <Text style={styles.BottomText}>five times. Click it again to stop the tuning cycle.</Text>
-                    </View>
-                </View>
-            </GestureRecognizer>
-        );
-    }
-}
+  return (
+    <GestureRecognizer onSwipe={gotoHome} config={config}>
+      <View style={styles.Detail}>
+        <Header title={`${global.description} Guitar Tuning`} showAbout={false} gotoHome={gotoHome} />
+        <Tuner notes={noteIndex} />
+        <View style={styles.Fret}>
+          <Image style={styles.Fret} source={require('./images/fret2.jpg')} />
+          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            {splitNotes.map((note, index) => (
+              <Text
+                key={index}
+                style={currentNote === noteIndex[index] ? styles.Playing : styles.Stopped}
+                onPress={() => handleNotePress(noteIndex[index])}>
+                {note.toUpperCase()}
+              </Text>
+            ))}
+          </View>
+        </View>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={styles.BottomText}>Click on a NOTE to hear that note played on a loop. Click it again to stop the loop.</Text>
+          <Text style={styles.BottomText}></Text>
+          <Text style={styles.BottomText}>Click on TUNE for each note to be played five times. Click it again to stop the tuning cycle.</Text>
+        </View>
+      </View>
+    </GestureRecognizer>
+  );
+};
 
 const styles = StyleSheet.create({
-    Detail: {
-        backgroundColor: '#e6e6e6',
-        height: 1500,
-
-    },
-    Fret: {
-        marginTop: -15,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-	Stopped: {
-		bottom: 175,
-		width: 35,
-		textAlign: 'center',
-		fontWeight: 'bold',
-		height: 50,
-		fontSize: 23,
-		color: '#FFFFFF',
-    },
-    Playing: {
-		bottom: 175,
-		width: 35,
-		textAlign: 'center',
-		fontWeight: 'bold',
-		height: 50,
-		fontSize: 23,
-		color: '#0d47a1',
-	},
-	Button: {
-        marginTop: 25,
-		bottom: 3,
-		height: 35,
-		width: 100,
-		borderRadius: 10,
-	},
-	ButtonText: {
-		bottom: 30,
-		textAlign: 'center',
-		fontWeight: 'bold',
-		height: 50,
-		fontSize: 16,
-		color: '#FFFFFF',
-	},
-	BottomText: {
-		top: -420,
-		fontWeight: 'bold',
-		fontSize: 17,
-        fontSize: 15,
-	}
+  Detail: {
+    backgroundColor: '#e6e6e6',
+    height: 1500,
+  },
+  Fret: {
+    marginTop: -15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  Stopped: {
+    bottom: 175,
+    width: 35,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    height: 50,
+    fontSize: 23,
+    color: '#FFFFFF',
+  },
+  Playing: {
+    bottom: 175,
+    width: 35,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    height: 50,
+    fontSize: 23,
+    color: '#0d47a1',
+  },
+  BottomText: {
+    top: -420,
+    fontWeight: 'bold',
+    fontSize: 17,
+    fontSize: 15,
+  },
 });
 
-export {Detail};
+export default Detail;

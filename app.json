@@ -1,26 +1,30 @@
 {
   "expo": {
-		"name": "KHS Guitar Tuner",
-		"description": "Basic app for tuning guitars",
-		"version": "1.0.2",
-		"slug": "khs-guitar-tuner",
-		"icon": "./ios/AppIcon.appiconset/ItunesArtwork@2x.png",
-		"primaryColor": "#0d47a1",
-    "sdkVersion": "27.0.0",
-		"orientation": "portrait",
-		"splash": {
-			"image" : "./splashScreen.png",
-	 		"resizeMode": "contain",
-	 		"backgroundColor": "#0d47a1"
-		},
-		"ios":	{
-			"bundleIdentifier": "com.keyholesoftware.khsguitartuner",
-			"icon": "./ios/AppIcon.appiconset/ItunesArtwork@2x.png",
-			"supportsTablet": false
-		},
-		"android": {
-			"package": "com.keyholesoftware.khsguitartuner",
-			"icon": "./android/app/src/main/res/playstore-icon.png"
-		}
-	}
+    "name": "KHS Guitar Tuner",
+    "description": "Basic app for tuning guitars",
+    "version": "1.0.2",
+    "slug": "khs-guitar-tuner",
+    "icon": "./ios/AppIcon.appiconset/ItunesArtwork@2x.png",
+    "primaryColor": "#0d47a1",
+    "orientation": "portrait",
+    "splash": {
+      "image": "./splashScreen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0d47a1"
+    },
+    "ios": {
+      "bundleIdentifier": "com.keyholesoftware.khsguitartuner",
+      "icon": "./ios/AppIcon.appiconset/ItunesArtwork@2x.png",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.keyholesoftware.khsguitartuner",
+      "icon": "./android/app/src/main/res/playstore-icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b051c633-f096-4d09-a06c-23ead6219294"
+      }
+    }
+  }
 }
