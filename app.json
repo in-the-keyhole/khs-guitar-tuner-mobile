@@ -14,12 +14,18 @@
     },
     "ios": {
       "bundleIdentifier": "com.keyholesoftware.khsguitartuner",
-      "icon": "./ios/AppIcon.appiconset/ItunesArtwork@2x.png",
-      "supportsTablet": false
+      "icon": "./ios/KHSGuitarTuner/Images.xcassets/AppIcon.appiconset/iTunesArtwork@2x.png",
+      "supportsTablet": false,
+      "buildNumber": "1"
     },
     "android": {
       "package": "com.keyholesoftware.khsguitartuner",
-      "icon": "./android/app/src/main/res/playstore-icon.png"
+      "icon": "./android/app/src/main/res/playstore-icon.png",
+      "versionCode": 3,
+      "adaptiveIcon": {
+        "foregroundImage": "./android/app/src/main/res/playstore-icon.png",
+        "backgroundColor": "#0d47a1"
+      }
     },
     "extra": {
       "eas": {
